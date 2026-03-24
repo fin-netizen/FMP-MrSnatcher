@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public enum States
 {
@@ -7,7 +8,7 @@ public enum States
     Idle,
     Walk,
     Locate,
-    Run,
+    Attack,
     Dead,
 }
 public class PlayerScript : MonoBehaviour
@@ -21,6 +22,7 @@ public class PlayerScript : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     public Animator anim;
+    public ButtonControl buttonWest { get; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,7 +51,7 @@ public class PlayerScript : MonoBehaviour
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                state = States.Run;
+                state = States.Attack;
             }
 
         }
@@ -57,7 +59,7 @@ public class PlayerScript : MonoBehaviour
         {
             IsDead();
         }
-        if (state == States.Run)
+        if (state == States.Attack)
         {
             DoMove(true);
             CheckForDeath();
@@ -100,27 +102,29 @@ public class PlayerScript : MonoBehaviour
 
             Vector3 vel = moveDir.normalized * speed;
             rb.linearVelocity = new Vector3(vel.x, rb.linearVelocity.y, vel.z);
-            
+            anim.SetBool("Walk", true);
+            /*
             if (fast == false)
             {
-                anim.SetBool("IsWalking", true);
-                anim.SetBool("IsRunning", false);
+                anim.SetBool("Walk", true);
+                anim.SetBool("Attack", false);
                 speed = 5f;
             }
             else
             {
-                anim.SetBool("IsRunning", true);
-                anim.SetBool("IsWalking", false);
+                anim.SetBool("Attack", true);
+                anim.SetBool("Walk", false);
                 speed = 9f;
             }
-            
+            */
         }
         else
         {
             state = States.Idle;
-            anim.SetBool("IsWalking", false);
-            anim.SetBool("IsRunning", false);
+            anim.SetBool("Walk", false);
+            anim.SetBool("Attack", false);
         }
+       
     }
 
 
