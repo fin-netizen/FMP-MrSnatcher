@@ -1,6 +1,8 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.Layouts;
 
 public enum States
 {
@@ -22,7 +24,7 @@ public class PlayerScript : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     public Animator anim;
-    public ButtonControl buttonWest { get; }
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -133,5 +135,4 @@ public class PlayerScript : MonoBehaviour
     {
 
     }
-
 }
