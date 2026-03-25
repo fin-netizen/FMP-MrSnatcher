@@ -20,7 +20,7 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(player.transform.position, transform.position);
-        print("the distance is " + distance);
+       // print("the distance is " + distance);
         if (distance >= 12)
         {
             

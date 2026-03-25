@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -17,6 +18,7 @@ public class PlayerScript : MonoBehaviour
 {
     States state;
     InputAction moveAction;
+    InputAction attackAction;
     Rigidbody rb;
     public Transform cam;
     public float speed = 6f;
@@ -24,7 +26,8 @@ public class PlayerScript : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     public Animator anim;
-    
+    public bool attackBeginning;
+    public ButtonControl buttonWest { get; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,30 +35,33 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         state = States.Idle;
         moveAction = InputSystem.actions.FindAction("Move");
+        attackAction = InputSystem.actions.FindAction("Attack");
     }
 
     // Update is called once per frame
     void Update()
     {
         DoLogic();
+        print("state = " + state);
     }
     public void DoLogic()
     {
+        if (attackAction.triggered)
+        {
+            print("Attack!!!");
+        }
+
         if (state == States.Idle)
         {
             DoIdle();
             CheckForDeath();
+            CheckForAttack();
         }
         if (state == States.Walk)
         {
             DoMove(false);
             CheckForDeath();
-
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                state = States.Attack;
-            }
-
+            CheckForAttack();
         }
         if (state == States.Dead)
         {
@@ -63,14 +69,8 @@ public class PlayerScript : MonoBehaviour
         }
         if (state == States.Attack)
         {
-            DoMove(true);
+            DoAttack();
             CheckForDeath();
-
-            if (Input.GetKey(KeyCode.LeftShift) == false)
-            {
-                state = States.Walk;
-            }
-
         }
     }
     void DoIdle()
@@ -83,6 +83,20 @@ public class PlayerScript : MonoBehaviour
     public void IsDead()
     {
 
+    }
+    public void CheckForAttack()
+    {
+        if( attackAction.triggered )
+        {
+            print("Attack!!!");
+            state = States.Attack;
+
+            //player attack animation
+            anim.SetBool("Attack", true);
+            anim.SetBool("Idle", false);
+            anim.SetBool("Walk", false);
+            
+        }
     }
     public void DoMove(bool fast)
     {
@@ -129,10 +143,26 @@ public class PlayerScript : MonoBehaviour
        
     }
 
-
-
     void CheckForDeath()
     {
 
     }
+
+    void DoAttack()
+    {
+
+    }
+
+    public void AttackFinished()
+    {
+        //change to idle state
+        state = States.Idle;
+        anim.SetBool("Attack", false); 
+        anim.SetBool("Idle", true); 
+    }
+    public void AttackCollision(OnCollisionStay collision)
+    {
+        
+    }
+   
 }
