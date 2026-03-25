@@ -27,7 +27,8 @@ public class PlayerScript : MonoBehaviour
     float turnSmoothVelocity;
     public Animator anim;
     public bool attackBeginning;
-    public ButtonControl buttonWest { get; }
+    
+    //public ButtonControl buttonWest { get; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -160,9 +161,12 @@ public class PlayerScript : MonoBehaviour
         anim.SetBool("Attack", false); 
         anim.SetBool("Idle", true); 
     }
-    public void AttackCollision(OnCollisionStay collision)
+    public void OnCollisionStay(Collider coll)
     {
-        
+        if (coll.gameObject.tag == "Enemy")
+        {
+
+        }
     }
    
 }
