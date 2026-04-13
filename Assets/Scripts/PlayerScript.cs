@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
     float turnSmoothVelocity;
     public Animator anim;
     public bool attackBeginning;
+    bool isAttacking;
     
     //public ButtonControl buttonWest { get; }
 
@@ -37,6 +38,8 @@ public class PlayerScript : MonoBehaviour
         state = States.Idle;
         moveAction = InputSystem.actions.FindAction("Move");
         attackAction = InputSystem.actions.FindAction("Attack");
+
+        isAttacking = false;
     }
 
     // Update is called once per frame
@@ -70,7 +73,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (state == States.Attack)
         {
-            DoAttack();
+            AttackCollide();
             CheckForDeath();
         }
     }
@@ -149,23 +152,44 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-    void DoAttack()
+    public void AttackCollide()
     {
-
+        //
+        anim.SetBool("isAttacking", true);
     }
+
+    public void AttackStart()
+    {
+        isAttacking = true;
+    }
+
+    public void ZeroAttack()
+    {
+        isAttacking = false;
+    }
+
+
 
     public void AttackFinished()
     {
         //change to idle state
         state = States.Idle;
         anim.SetBool("Attack", false); 
-        anim.SetBool("Idle", true); 
-    }
-    public void OnCollisionStay(Collider coll)
-    {
-        if (coll.gameObject.tag == "Enemy")
-        {
+        anim.SetBool("Idle", true);
+        anim.SetBool("isAttacking", false);
 
+        isAttacking = false;
+
+    }
+
+    public void OnTriggerStay(Collider coll)
+    {
+        print("hand has hit " + coll.gameObject.tag);
+
+        if (coll.gameObject.tag == "Enemy" && (isAttacking == true))
+        {
+            print("do destroy");
+            Destroy(coll.gameObject);
         }
     }
    
