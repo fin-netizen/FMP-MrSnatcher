@@ -54,13 +54,4 @@ public class EnemyScript : MonoBehaviour
     {
         target = newTarget;
     }
-    public void OnTriggerStay(Collider coll)
-    {
-        print("hand has hit " + coll.gameObject.tag);
-
-        if (coll.gameObject.tag == "Enemy" + ("isAttacking", true))
-        {
-            Destroy(gameObject);
-        }
-    }
 }
