@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.AI;
 using UnityEditor.Rendering;
 
-public enum EnemyStates
+public enum Enemy2States
 {
     Idle,
     MoveAway,
 }
-public class EnemyScript : MonoBehaviour
+public class EnemyScript2 : MonoBehaviour
 {
     public NavMeshAgent agent;
     EnemyStates state;
@@ -49,25 +49,20 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DoLogic();
-       
+        if(state == EnemyStates.Idle)
+        {
+            DoIdle();
+        }
+        if(state == EnemyStates.MoveAway)
+        {
+            MoveAwayState();
+        }
         
 
         //DoPatrol();
 
       
 
-    }
-    public void DoLogic()
-    {
-        if (state == EnemyStates.Idle)
-        {
-            DoIdle();
-        }
-        if (state == EnemyStates.MoveAway)
-        {
-            MoveAwayState();
-        }
     }
     public void SetTarget(Transform newTarget)
     {
@@ -145,22 +140,17 @@ public class EnemyScript : MonoBehaviour
         {
             MakeTargetPoint();
             state = EnemyStates.MoveAway;
-            print("E key is pressed");
+
         }
     }
     void MoveAwayState()
     {
-        //transform.position += transform.forward * speed * Time.deltaTime;
-        //Vector3 enemyTargetPointPosition = new Vector3(targetPoint.x, this.transform.position.y, targetPoint.z);
-        //this.transform.LookAt(targetPoint);
-
         // check for enemy agent reaching the destination point
-        print("current destination is " + destination);
         
         //if the enemy is close to the point, change the state to idle
-        if (Vector3.Distance (destination, target.position) <= 1.0f)
+        if (Vector3.Distance (destination, target.position) > 1.0f)
         {
-            print("Timer is currently at " + restTimer);
+
             destination = target.position;
             agent.destination = destination;
             restTimer -= Time.deltaTime;
@@ -172,10 +162,9 @@ public class EnemyScript : MonoBehaviour
         }
 
 
+        //transform.position += transform.forward * speed * Time.deltaTime;
+        //Vector3 enemyTargetPointPosition = new Vector3(targetPoint.x, this.transform.position.y, targetPoint.z);
+        //this.transform.LookAt(targetPoint);
         
-    }
-    void timerEnd()
-    {
-
     }
 }
