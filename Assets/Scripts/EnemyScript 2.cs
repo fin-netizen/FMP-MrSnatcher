@@ -20,7 +20,7 @@ public class EnemyScript2 : MonoBehaviour
     public Transform target;
     Rigidbody rb;
     public bool isPartrolling;
-    // public Animator anim;
+    public Animator anim;
     //PlayerScript playerScript;
     public float range = 30f;
     public float inBetweenDistance = 15f;
@@ -135,7 +135,8 @@ public class EnemyScript2 : MonoBehaviour
     void DoIdle()
     {
         restTimer = 3;
-
+        anim.SetBool("EnemyIdle", true);
+        anim.SetBool("EnemyWalk", false);
         if (Keyboard.current.eKey.isPressed)
         {
             MakeTargetPoint();
@@ -146,7 +147,9 @@ public class EnemyScript2 : MonoBehaviour
     void MoveAwayState()
     {
         // check for enemy agent reaching the destination point
-        
+        anim.SetBool("EnemyIdle", false);
+        anim.SetBool("EnemyWalk", true);
+
         //if the enemy is close to the point, change the state to idle
         if (Vector3.Distance (destination, target.position) > 1.0f)
         {

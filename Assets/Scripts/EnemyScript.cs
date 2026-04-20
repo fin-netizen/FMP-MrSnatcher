@@ -24,7 +24,7 @@ public class EnemyScript : MonoBehaviour
     //public Transform target;
     Rigidbody rb;
     public bool isPartrolling;
-    // public Animator anim;
+    public Animator anim;
     //PlayerScript playerScript;
     public float range = 30f;
     public float inBetweenDistance = 15f;
@@ -136,7 +136,7 @@ public class EnemyScript : MonoBehaviour
     void DoIdle()
     {
         restTimer = 3;
-
+        anim.SetBool("EnemyIdle", true);
         if (Keyboard.current.eKey.isPressed)
         {
             MakeTargetPoint();
