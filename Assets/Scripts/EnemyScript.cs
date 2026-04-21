@@ -158,7 +158,7 @@ public class EnemyScript : MonoBehaviour
         print("distance = " + distance );
         
         //if the enemy is close to the point, change the state to idle
-        if ( distance < 3.0f )
+        if ( distance < 5.0f )
         {
             print("Timer is currently at " + restTimer);
             restTimer -= Time.deltaTime;
