@@ -137,6 +137,7 @@ public class EnemyScript : MonoBehaviour
     {
         restTimer = 3;
         anim.SetBool("EnemyIdle", true);
+        anim.SetBool("EnemyWalk", false);
         if (Keyboard.current.eKey.isPressed)
         {
             MakeTargetPoint();
@@ -151,7 +152,8 @@ public class EnemyScript : MonoBehaviour
         //transform.position += transform.forward * speed * Time.deltaTime;
         //Vector3 enemyTargetPointPosition = new Vector3(targetPoint.x, this.transform.position.y, targetPoint.z);
         //this.transform.LookAt(targetPoint);
-
+        anim.SetBool("EnemyIdle", false);
+        anim.SetBool("EnemyWalk", true);
         // check for enemy agent reaching the destination point
         print("distance = " + distance );
         
