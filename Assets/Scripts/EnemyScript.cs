@@ -26,8 +26,8 @@ public class EnemyScript : MonoBehaviour
     public bool isPartrolling;
     public Animator anim;
     //PlayerScript playerScript;
-    public float range = 30f;
-    public float inBetweenDistance = 15f;
+    public float range = 20f;
+    public float inBetweenDistance = 10f;
     //Vector3 destination;
     //public Vector3 targetPoint;
 
@@ -158,7 +158,7 @@ public class EnemyScript : MonoBehaviour
         print("distance = " + distance );
         
         //if the enemy is close to the point, change the state to idle
-        if ( distance < 5.0f )
+        if ( distance < 3.0f )
         {
             print("Timer is currently at " + restTimer);
             restTimer -= Time.deltaTime;
