@@ -41,8 +41,11 @@ public class EnemyScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
 
-        player = GameObject.FindWithTag("player");
+        player = GameObject.FindWithTag("Player");
         state = EnemyStates.Idle;
+
+
+        LevelManager.instance.targetCount++;
     }
 
     // Update is called once per frame

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,7 +25,7 @@ public class PlayerScript : MonoBehaviour
     public Animator anim;
     public bool attackBeginning;
     bool isAttacking;
-    
+    public TextMeshProUGUI dialogue;
     //public ButtonControl buttonWest { get; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -186,6 +187,7 @@ public class PlayerScript : MonoBehaviour
         {
             print("do destroy");
             Destroy(coll.gameObject);
+            LevelManager.instance.targetCount--;
         }
     }
    
