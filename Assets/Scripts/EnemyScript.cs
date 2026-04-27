@@ -30,7 +30,7 @@ public class EnemyScript : MonoBehaviour
     public float inBetweenDistance = 10f;
     //Vector3 destination;
     //public Vector3 targetPoint;
-
+    public float hideTimer = 10f;
     public float restTimer = 3f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -1,12 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     public TextMeshProUGUI dialouge;
     public int targetCount;
-
+    public float menuTimer = 3f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -52,7 +53,13 @@ public class LevelManager : MonoBehaviour
         dialouge.text = ("Current target count is " + targetCount);
         if(targetCount == 0)
         {
-            dialouge.text = ("Congratulations, you killed all your targets, Please press L to return to the menu");
+            menuTimer -= Time.deltaTime;
+            dialouge.text = ("Congratulations, you killed all your targets, now let's get you back to the menu");
+            if(menuTimer <= 0)
+            {
+                SceneManager.LoadScene("Menu");
+            }
+            
         }
     }
 }

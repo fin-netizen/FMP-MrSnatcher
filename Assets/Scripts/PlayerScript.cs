@@ -25,7 +25,9 @@ public class PlayerScript : MonoBehaviour
     public Animator anim;
     public bool attackBeginning;
     bool isAttacking;
+    bool isWalking;
     public TextMeshProUGUI dialogue;
+    public Vector2 direction;
     //public ButtonControl buttonWest { get; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -120,6 +122,7 @@ public class PlayerScript : MonoBehaviour
             Vector3 vel = moveDir.normalized * speed;
             rb.linearVelocity = new Vector3(vel.x, rb.linearVelocity.y, vel.z);
             anim.SetBool("Walk", true);
+            anim.SetBool("Attack", false);
             /*
             if (fast == false)
             {
@@ -135,11 +138,18 @@ public class PlayerScript : MonoBehaviour
             }
             */
         }
-        else
+        else if((isAttacking == false) && direction.magnitude >= 0)
         {
             state = States.Idle;
             anim.SetBool("Walk", false);
             anim.SetBool("Attack", false);
+        }
+        else 
+        {
+            isAttacking = true;
+            state = States.Attack;
+            anim.SetBool("Attack", true);
+            anim.SetBool("Walk", false);
         }
        
     }
@@ -173,7 +183,8 @@ public class PlayerScript : MonoBehaviour
         state = States.Idle;
         anim.SetBool("Attack", false); 
         anim.SetBool("Idle", true);
-        anim.SetBool("isAttacking", false);
+       
+            anim.SetBool("isAttacking", false);
 
         isAttacking = false;
 
