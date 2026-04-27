@@ -3593,7 +3593,7 @@ GameObject:
   - component: {fileID: 487751787}
   - component: {fileID: 487751786}
   m_Layer: 5
-  m_Name: EnemyCount
+  m_Name: TargetCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4686,6 +4686,7 @@ MonoBehaviour:
   anim: {fileID: 644641068}
   range: 30
   inBetweenDistance: 15
+  hideTimer: 10
   restTimer: 3
 --- !u!195 &644641070
 NavMeshAgent:
@@ -10703,6 +10704,7 @@ MonoBehaviour:
   anim: {fileID: 1551425273}
   range: 30
   inBetweenDistance: 15
+  hideTimer: 10
   restTimer: 3
 --- !u!95 &1551425273
 Animator:
@@ -13971,6 +13973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   dialouge: {fileID: 487751786}
   targetCount: 0
+  endTimer: 3
 --- !u!4 &2062007861
 Transform:
   m_ObjectHideFlags: 0
@@ -14319,6 +14322,7 @@ MonoBehaviour:
   anim: {fileID: 2091944293}
   attackBeginning: 0
   dialogue: {fileID: 0}
+  direction: {x: 0, y: 0}
 --- !u!54 &2091944295
 Rigidbody:
   m_ObjectHideFlags: 0

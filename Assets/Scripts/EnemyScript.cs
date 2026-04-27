@@ -30,7 +30,7 @@ public class EnemyScript : MonoBehaviour
     public float inBetweenDistance = 10f;
     //Vector3 destination;
     //public Vector3 targetPoint;
-    public float hideTimer = 10f;
+    public float hideTimer = 3f;
     public float restTimer = 3f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -139,9 +139,10 @@ public class EnemyScript : MonoBehaviour
     void DoIdle()
     {
         restTimer = 3;
+        hideTimer -= Time.deltaTime;
         anim.SetBool("EnemyIdle", true);
         anim.SetBool("EnemyWalk", false);
-        if (Keyboard.current.eKey.isPressed)
+        if (hideTimer <= 0)
         {
             MakeTargetPoint();
             state = EnemyStates.MoveAway;
@@ -163,6 +164,7 @@ public class EnemyScript : MonoBehaviour
         //if the enemy is close to the point, change the state to idle
         if ( distance < 3.0f )
         {
+            hideTimer = 3;
             print("Timer is currently at " + restTimer);
             restTimer -= Time.deltaTime;
             if (restTimer <= 0)
