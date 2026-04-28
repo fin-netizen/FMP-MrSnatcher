@@ -753,6 +753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   dialouge: {fileID: 138933725}
   targetCount: 0
+  endTimer: 3
 --- !u!4 &52924261
 Transform:
   m_ObjectHideFlags: 0
@@ -5672,10 +5673,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1168601
+  m_Radius: 0.15313317
   m_Height: 1.0093775
   m_Direction: 1
-  m_Center: {x: 0.0035727755, y: 0.0563056, z: -0.02145276}
+  m_Center: {x: 0.008334823, y: 0.0563056, z: -0.009043322}
 --- !u!95 &433177138
 Animator:
   serializedVersion: 7
@@ -5767,6 +5768,7 @@ MonoBehaviour:
   anim: {fileID: 433177138}
   range: 30
   inBetweenDistance: 15
+  hideTimer: 3
   restTimer: 3
 --- !u!23 &433177142
 MeshRenderer:
@@ -7818,6 +7820,7 @@ MonoBehaviour:
   anim: {fileID: 582881559}
   range: 30
   inBetweenDistance: 15
+  hideTimer: 3
   restTimer: 3
 --- !u!23 &582881556
 MeshRenderer:
@@ -7933,10 +7936,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1168601
+  m_Radius: 0.17104304
   m_Height: 0.98949003
   m_Direction: 1
-  m_Center: {x: 0.0035727755, y: 0.0662492, z: -0.02145276}
+  m_Center: {x: -0.0044702347, y: 0.0662492, z: -0.009987123}
 --- !u!1001 &620298804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21234,6 +21237,7 @@ MonoBehaviour:
   anim: {fileID: 1551425272}
   range: 30
   inBetweenDistance: 15
+  hideTimer: 3
   restTimer: 3
 --- !u!23 &1551425267
 MeshRenderer:
@@ -21398,10 +21402,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13122627
+  m_Radius: 0.16839418
   m_Height: 1.0120924
   m_Direction: 1
-  m_Center: {x: -0.005398725, y: 0.058811132, z: -0.0042537246}
+  m_Center: {x: -0.0015612778, y: 0.058811132, z: 0.02237281}
 --- !u!1001 &1558543750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21610,10 +21614,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1168601
+  m_Radius: 0.15314409
   m_Height: 1.0093775
   m_Direction: 1
-  m_Center: {x: 0.0035727755, y: 0.0563056, z: -0.02145276}
+  m_Center: {x: 0.0045062937, y: 0.0563056, z: -0.01107766}
 --- !u!95 &1573360293
 Animator:
   serializedVersion: 7
@@ -21705,6 +21709,7 @@ MonoBehaviour:
   anim: {fileID: 1573360293}
   range: 30
   inBetweenDistance: 15
+  hideTimer: 3
   restTimer: 3
 --- !u!23 &1573360297
 MeshRenderer:
@@ -21772,7 +21777,7 @@ Transform:
   m_GameObject: {fileID: 1573360291}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -43.2, y: 2.534, z: 64.5}
+  m_LocalPosition: {x: -43.2, y: 2.534, z: 62.429}
   m_LocalScale: {x: 5.24, y: 5.24, z: 5.24}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -28645,6 +28650,7 @@ MonoBehaviour:
   anim: {fileID: 2091944293}
   attackBeginning: 0
   dialogue: {fileID: 0}
+  direction: {x: 0, y: 0}
 --- !u!54 &2091944295
 Rigidbody:
   m_ObjectHideFlags: 0

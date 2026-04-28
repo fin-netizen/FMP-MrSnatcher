@@ -49,10 +49,10 @@ public class PlayerScript : MonoBehaviour
     }
     public void DoLogic()
     {
-        if (attackAction.triggered)
+       /* if (attackAction.triggered)
         {
             print("Attack!!!");
-        }
+        }*/
 
         if (state == States.Idle)
         {
@@ -183,8 +183,7 @@ public class PlayerScript : MonoBehaviour
         state = States.Idle;
         anim.SetBool("Attack", false); 
         anim.SetBool("Idle", true);
-       
-            anim.SetBool("isAttacking", false);
+        anim.SetBool("isAttacking", false);
 
         isAttacking = false;
 

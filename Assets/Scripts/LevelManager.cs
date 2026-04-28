@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public TextMeshProUGUI dialouge;
     public int targetCount;
-    public float endTimer = 3f;
+    public float endTimer = 5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -58,7 +58,7 @@ public class LevelManager : MonoBehaviour
             if(endTimer <= 0)
             {
                 SceneManager.LoadScene("Menu");
-                endTimer = 3;
+                endTimer = 5;
             }
             
         }
