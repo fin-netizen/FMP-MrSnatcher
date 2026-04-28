@@ -54,10 +54,10 @@ public class LevelManager : MonoBehaviour
         if(targetCount == 0)
         {
             endTimer -= Time.deltaTime;
-            dialouge.text = ("Congratulations, you killed all your targets, now let's get you to the next level");
+            dialouge.text = ("Congratulations, you killed all your targets, now let's get you back to the menu");
             if(endTimer <= 0)
             {
-                SceneManager.LoadScene("Level2");
+                SceneManager.LoadScene("Menu");
                 endTimer = 5;
             }
             
