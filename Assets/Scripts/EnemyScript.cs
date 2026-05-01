@@ -45,7 +45,7 @@ public class EnemyScript : MonoBehaviour
         state = EnemyStates.Idle;
 
 
-        LevelManager.instance.targetCount++;
+        //LevelManager.instance.targetCount++;
     }
 
     // Update is called once per frame
@@ -159,7 +159,7 @@ public class EnemyScript : MonoBehaviour
         anim.SetBool("EnemyIdle", false);
         anim.SetBool("EnemyWalk", true);
         // check for enemy agent reaching the destination point
-        print("distance = " + distance );
+        //print("distance = " + distance );
         
         //if the enemy is close to the point, change the state to idle
         if ( distance < 3.0f )

@@ -197,7 +197,7 @@ public class PlayerScript : MonoBehaviour
         {
             print("do destroy");
             Destroy(coll.gameObject);
-            LevelManager.instance.targetCount--;
+            //LevelManager.instance.targetCount--;
         }
     }
    
