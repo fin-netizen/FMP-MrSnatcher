@@ -8,10 +8,17 @@ public class MenuScript : MonoBehaviour
     InputAction exit;
     public TextMeshProUGUI dialogue;
     int targetCount;
+
+    public GameObject lm;
+    LevelManager lmScript;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         exit = InputSystem.actions.FindAction("Exit");
+
+
+        lmScript = lm.GetComponent<LevelManager>();
 
         if (exit == null)
         {
@@ -39,6 +46,8 @@ public class MenuScript : MonoBehaviour
             dialogue.text = LevelManager.instance.dialogueText;
         }
         */
+
+        dialogue.text = lmScript.dialogueText;
 
 
         if (exit.IsPressed())

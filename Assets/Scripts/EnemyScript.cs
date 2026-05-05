@@ -165,7 +165,7 @@ public class EnemyScript : MonoBehaviour
         if ( distance < 3.0f )
         {
             hideTimer = 3;
-            print("Timer is currently at " + restTimer);
+            //print("Timer is currently at " + restTimer);
             restTimer -= Time.deltaTime;
             if (restTimer <= 0)
             {

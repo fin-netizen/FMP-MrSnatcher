@@ -11,10 +11,11 @@ public class LevelManager : MonoBehaviour
     
     public int targetCount;
     public float endTimer = 5f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        
+
 
         /*
         if (instance == null)
@@ -56,7 +57,13 @@ public class LevelManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
+    {
+        FindEnemies();
+    }
+
+
+    void FindEnemies()
     {
         GameObject[] enemies;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -67,18 +74,20 @@ public class LevelManager : MonoBehaviour
         print("target count=" + targetCount);
         print("Current target count is " + targetCount);
         dialogueText = ("Current target count is " + targetCount);
-        if(targetCount == 0)
+        if (targetCount == 0)
         {
             endTimer -= Time.deltaTime;
             dialogueText = ("Congratulations, you killed all your targets, now let's get you back to the menu");
-            if(endTimer <= 0)
+            if (endTimer <= 0)
             {
                 SceneManager.LoadScene("Menu");
                 endTimer = 5;
             }
-            
+
         }
     }
+
+
     public void TargetCount(int targetCount)
     { 
 

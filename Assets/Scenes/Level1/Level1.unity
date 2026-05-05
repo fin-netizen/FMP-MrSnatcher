@@ -2558,6 +2558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuScript
   dialogue: {fileID: 487751789}
+  lm: {fileID: 2062007859}
 --- !u!1001 &326415350
 PrefabInstance:
   m_ObjectHideFlags: 0
