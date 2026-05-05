@@ -80,7 +80,18 @@ public class LevelManager : MonoBehaviour
             dialogueText = ("Congratulations, you killed all your targets, now let's get you back to the menu");
             if (endTimer <= 0)
             {
-                SceneManager.LoadScene("Menu");
+
+                if ( SceneManager.GetActiveScene().name == "Level1" )
+                {
+                    SceneManager.LoadScene("Level2");
+                    return;
+                }
+                if (SceneManager.GetActiveScene().name == "Level2")
+                {
+                    SceneManager.LoadScene("Menu");
+                }
+
+
                 endTimer = 5;
             }
 
