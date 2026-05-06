@@ -197,6 +197,7 @@ public class PlayerScript : MonoBehaviour
         {
             print("do destroy");
             Destroy(coll.gameObject);
+            AudioManager.instance.Play("sfx1", AudioManager.instance.sfxVol);
             //LevelManager.instance.targetCount--;
         }
     }
