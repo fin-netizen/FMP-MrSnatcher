@@ -47,6 +47,8 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + "Not found!");
             return;
         }
+
+        print("changing channel" + name + " to:" + vol);
         s.source.volume = vol;
 
 
@@ -68,6 +70,10 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //update the audio music and sfx channels with the music volume
+        ChangeAudioSourceVolume("music", musicVol);
+        ChangeAudioSourceVolume("sfx", sfxVol);
+
+
     } 
 }

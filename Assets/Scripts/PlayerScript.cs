@@ -184,7 +184,6 @@ public class PlayerScript : MonoBehaviour
         anim.SetBool("Attack", false); 
         anim.SetBool("Idle", true);
         anim.SetBool("isAttacking", false);
-
         isAttacking = false;
 
     }
