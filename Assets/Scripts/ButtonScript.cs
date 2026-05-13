@@ -2,11 +2,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour
 {
     
     [SerializeField] private string resetGameLevel = "level";
+    public Button button;
     public void ResetButton()
     {
         SceneManager.LoadScene(resetGameLevel);
@@ -14,7 +16,7 @@ public class ButtonScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-      
+        clicked();
     }
 
     // Update is called once per frame
@@ -30,5 +32,8 @@ public class ButtonScript : MonoBehaviour
     {
         Application.Quit();
     }
-   
+    public void clicked()
+    {
+        button.Select();
+    }
 }
